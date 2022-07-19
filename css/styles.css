@@ -16,6 +16,9 @@
    --fs-700: 1.65rem;
    --fw-400: 400;
    --fw-700: 700;
+
+   --br: 1.5rem;
+   --br-circle: 50%;
 }
 
 /* ===== GENERAL STYLES ===== */
@@ -31,18 +34,13 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
 }
 
-.text-center {
-    text-align: center;
-}
-
-.content-center {
-    margin-inline: auto;
-}
-
-.padding-block-16 {
-    padding-block: 1rem;
+footer {
+    position: absolute;
+    bottom: 0;
+    padding-block: 1.5em;
 }
 
 /* ===== BUTTONS ===== */
@@ -57,18 +55,8 @@ button, .btn {
     z-index: 1;
 }
 
-.btn::before {
-    content: "";
-    width: 100%;
-    height: 100%;
-    border-radius: inherit;
-
-    position: absolute;
-    inset: 0;
-
-    z-index: -1;
-    opacity: 0;
-    transition: opacity 300ms ease-in-out;
+.btn > * {
+    cursor: pointer;
 }
 
 .btn[data-type="primary"] {
@@ -77,9 +65,7 @@ button, .btn {
     color: var(--clr-neutral-100);
     background-color: var(--clr-primary-400);
     padding-block: 1rem;
-    border-radius: 1.5rem;
-    position: relative;
-    z-index: 1;
+    border-radius: var(--br);
 }
 
 .btn[data-type="secondary"],
@@ -87,89 +73,144 @@ button, .btn {
     display: grid;
     place-items: center;
     background-color: var(--clr-neutral-600);
+
     width: 3rem;
     height: 3rem;
-    border-radius: 50%;
+    border-radius: var(--br-circle);
+}
+
+input[type="radio"] {
+    appearance: none;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+
+    position: absolute;    
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+input[type="radio"] ~ label {    
+     padding-top: 0.25rem;
+}
+
+/* ===== pseudo elements ===== */
+
+.btn[data-type="primary"]::before,
+input[type="radio"]::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 300ms ease-in-out;
 }
 
 .btn[data-type="primary"]::before {    
     background-color: var(--clr-neutral-100);
 }
 
-.btn[data-type="secondary"]::before {    
+input[type="radio"]::before {    
     background-color: var(--clr-neutral-400);
 }
+
+/* ===== hover and focus states ====== */
 
 .btn[data-type="primary"]:hover,
 .btn[data-type="primary"]:focus {
     color: var(--clr-primary-400);
 }
 
-.btn[data-type="secondary"]:hover,
-.btn[data-type="secondary"]:focus {
+input[type="radio"]:hover ~ label,
+input[type="radio"]:focus ~ label,
+input[type="radio"]:checked ~ label {
     color: var(--clr-neutral-100);
 }
 
 .btn[data-type="primary"]:hover::before,
 .btn[data-type="primary"]:focus::before,
-.btn[data-type="secondary"]:hover::before,
-.btn[data-type="secondary"]:focus::before {
+input[type="radio"]:hover::before,
+input[type="radio"]:focus::before {
     opacity: 1;
 }
 
-.btn[data-type="secondary"].is-selected {
+input[type="radio"]:checked,
+input[type="radio"]:checked::before {
     background-color: var(--clr-primary-400);
-    color: var(--clr-neutral-100);
 }
 
-.btn[data-type="secondary"].is-selected::before {    
-    background-color: var(--clr-primary-400);
-}
 
 /* ===== CARD ===== */
 
 .card {
     width: 95%;
-    max-width: 25rem;
+    max-width: 25.5rem;
     margin-inline: auto;    
 
     padding: 1.5rem;
-    border-radius: 1.5rem;
+    border-radius: var(--br);
     background-image: linear-gradient(to bottom, var(--clr-neutral-700), var(--clr-neutral-800));
 }
 
-.card__content {
+.card__content,
+.card__content form {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.thank-you__content {
+    padding-block: 1rem;
+    text-align: center;
+    gap: 1.75rem;
+}
+
+.thank-you__image {
+    margin-inline: auto;
+}
+
+.thank-you__body > * + * {
+    margin-top: 0.75rem;
 }
 
 .title {
     font-size: var(--fs-700);
     font-weight: var(--fw-700);
     color: var(--clr-neutral-100);
+    line-height: 1.1;
 }
 
+
 .rating-scale {
+    margin-block: 1.125rem;
     display: flex;
-    justify-content: center;
-    gap: 1.25rem;
+    justify-content: space-between;
 }
 
 .rating-info {
     align-self: center;
     font-size: var(--fs-400);
+    font-weight: var(--fw-400);
     color: var(--clr-primary-400);
     background-color: var(--clr-neutral-600);
-    padding: 0.25rem 1rem;
-    border-radius: 1.5rem;    
+    padding: 0.5rem 1rem;
+    border-radius: var(--br);    
 }
 
 .error {
+    text-align: center;
     font-weight: var(--fw-700);
     color: var(--clr-primary-400);
 }
 
+/* ===== ATTRIBUTION ===== */
 
 .attribution {
     font-size: 11px;

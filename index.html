@@ -44,39 +44,69 @@
             Please let us know how we did with your support request. All
             feedback is appreciated to help us improve our offering!
           </p>
-          <ul class="rating-scale" role="list">
-            <li class="btn" data-type="secondary">1</li>
-            <li class="btn" data-type="secondary">2</li>
-            <li class="btn" data-type="secondary">3</li>
-            <li class="btn" data-type="secondary">4</li>
-            <li class="btn" data-type="secondary">5</li>
-          </ul>
-          <button type="submit" class="btn" data-type="primary">Submit</button>
-          <div class="error text-center"></div>
+          <form method="get" action="#" autocomplete="off">
+            <div class="rating-scale">
+              <div class="btn" data-type="secondary">
+                <input type="radio" name="rating" id="1" value="1" />
+                <label for="1">1</label>
+              </div>
+
+              <div class="btn" data-type="secondary">
+                <input type="radio" name="rating" id="2" value="2" />
+                <label for="2">2</label>
+              </div>
+
+              <div class="btn" data-type="secondary">
+                <input type="radio" name="rating" id="3" value="3" />
+                <label for="3">3</label>
+              </div>
+
+              <div class="btn" data-type="secondary">
+                <input type="radio" name="rating" id="4" value="4" />
+                <label for="4">4</label>
+              </div>
+
+              <div class="btn" data-type="secondary">
+                <input type="radio" name="rating" id="5" value="5" />
+                <label for="5">5</label>
+              </div>
+            </div>
+
+            <button type="submit" class="btn" data-type="primary">
+              Submit
+            </button>
+          </form>
+
+          <div class="error"></div>
         </div>
       </div>
       <!-- Rating state end -->
+    </main>
+    <footer>
       <div class="attribution">
         Challenge by
         <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
           >Frontend Mentor</a
-        >. Coded by <a href="#">Your Name Here</a>.
+        >. Coded by
+        <a href="https://www.frontendmentor.io/profile/ania221B">ania221B</a>.
       </div>
-    </main>
+    </footer>
 
     <!-- Thank you state start -->
 
     <template>
-      <div class="card__content padding-block-16 text-center">
-        <div class="card__image content-center">
+      <div class="card__content thank-you__content">
+        <div class="thank-you__image">
           <img src="images/illustration-thank-you.svg" alt="" />
         </div>
         <h2 class="rating-info"></h2>
-        <p class="title">Thank you!</p>
-        <p>
-          We appreciate you taking the time to give a rating. If you ever need
-          more support, don’t hesitate to get in touch!
-        </p>
+        <div class="thank-you__body">
+          <p class="title">Thank you!</p>
+          <p>
+            We appreciate you taking the time to give a rating. If you ever need
+            more support, don’t hesitate to get in touch!
+          </p>
+        </div>
       </div>
     </template>
 
